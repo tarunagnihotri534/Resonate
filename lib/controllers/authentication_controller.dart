@@ -155,39 +155,31 @@ class AuthenticationController extends GetxController {
         password: newPassword,
       );
 
-      customSnackbar(
-        AppLocalizations.of(context)!.success,
-        AppLocalizations.of(context)!.passwordResetSuccess,
-        LogType.success,
-      );
+      if (!context.mounted) return true;
+      final l10n = AppLocalizations.of(context)!;
 
-      SemanticsService.announce(
-        AppLocalizations.of(context)!.passwordResetSuccess,
-        TextDirection.ltr,
-      );
+      customSnackbar(l10n.success, l10n.passwordResetSuccess, LogType.success);
+
+      SemanticsService.announce(l10n.passwordResetSuccess, TextDirection.ltr);
 
       Get.offNamed(AppRoutes.loginScreen);
       return true;
     } on AppwriteException catch (e) {
+      if (!context.mounted) return false;
       log(e.message ?? 'AppwriteException in confirmPasswordReset');
+      final errorTitle = AppLocalizations.of(context)!.error;
       final errorMessage = (e.message != null && e.message!.isNotEmpty)
           ? e.message!
-          : AppLocalizations.of(context)!.error;
-      customSnackbar(
-        AppLocalizations.of(context)!.error,
-        errorMessage,
-        LogType.error,
-      );
+          : errorTitle;
+      customSnackbar(errorTitle, errorMessage, LogType.error);
 
       SemanticsService.announce(errorMessage, TextDirection.ltr);
       return false;
     } catch (e) {
+      if (!context.mounted) return false;
       log(e.toString());
-      customSnackbar(
-        AppLocalizations.of(context)!.error,
-        e.toString(),
-        LogType.error,
-      );
+      final errorTitle = AppLocalizations.of(context)!.error;
+      customSnackbar(errorTitle, e.toString(), LogType.error);
 
       SemanticsService.announce(e.toString(), TextDirection.ltr);
       return false;

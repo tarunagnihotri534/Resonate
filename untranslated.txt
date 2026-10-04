@@ -1,7 +1,5 @@
 {
   "gu": [
-    "passwordResetSuccess",
-    "invalidOrMissingResetLink",
     "appPreferences",
     "transcriptionModel",
     "transcriptionModelDescription",
@@ -36,8 +34,6 @@
   ],
 
   "kn": [
-    "passwordResetSuccess",
-    "invalidOrMissingResetLink",
     "hide",
     "removeRoom",
     "removeRoomFromList",
@@ -56,8 +52,6 @@
   ],
 
   "mr": [
-    "passwordResetSuccess",
-    "invalidOrMissingResetLink",
     "hide",
     "removeRoom",
     "removeRoomFromList",
