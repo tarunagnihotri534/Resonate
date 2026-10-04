@@ -140,6 +140,13 @@ class AppLocalizationsGu extends AppLocalizations {
   String get setNewPassword => 'નવો પાસવર્ડ સેટ કરો';
 
   @override
+  String get passwordResetSuccess => 'Password reset successfully!';
+
+  @override
+  String get invalidOrMissingResetLink =>
+      'Invalid or expired password reset link. Please request a new one.';
+
+  @override
   String get emailChanged => 'ઈમેઈલ બદલાયો';
 
   @override
